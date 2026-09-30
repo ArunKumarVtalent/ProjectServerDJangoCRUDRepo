@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+<form method="post">
+    <div>
+        {{ErrorMessage}}
+    </div>
+    {% csrf_token %}
+    <div class="row" style="background-color: green;color: aqua;margin-bottom: 20px;text-align: center;">
+        <div class="col-sm-12">
+            <h1>Employee Updation</h1>
+        </div>
+    </div>
+    <div class="row" style="margin-bottom: 10px;">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-2">
+            <b>EmpID</b>
+        </div>
+        <div class="col-sm-3">
+            <input type="text" id="txtEmpId" value="{{emp.0}}" name="txtEmpId" disabled="disabled" class="form-control" />
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+    <div class="row" style="margin-bottom: 10px;">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-2">
+            <b>Name</b>
+        </div>
+        <div class="col-sm-3">
+            <input type="text" id="txtEname" value="{{emp.1}}" name="txtEname" class="form-control" placeholder="Enter name...!" />
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+    <div class="row" style="margin-bottom: 10px;">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-2">
+            <b>Password</b>
+        </div>
+        <div class="col-sm-3">
+            <input type="password" id="txtPwd" value="{{emp.3}}" name="txtPwd" class="form-control" placeholder="Enter password...!" />
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+    <div class="row" style="margin-bottom: 10px;">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-2">
+            <b>Gender</b>
+        </div>
+        <div class="col-sm-3">
+            <input type="radio" id="rbtnMale" name="Gender" value="Male" {% if emp.2 == "Male" %}checked{% endif %} /><span>Male</span>
+            <input type="radio" id="rbtnFemale" name="Gender" value="Female" {% if emp.2 == "Female" %}checked{% endif %} /><span>Female</span>
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+    <div class="row" style="margin-bottom: 10px;">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-2">
+            <b>Phone</b>
+        </div>
+        <div class="col-sm-3">
+            <input type="text"  value="{{emp.4}}" id="txtPhone" name="txtPhone" class="form-control"
+                placeholder="Enter phone number...!" />
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+    <div class="row" style="margin-bottom: 10px;">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-2">
+            <b>Emai;</b>
+        </div>
+        <div class="col-sm-3">
+            <input type="text" id="txtEmail" value="{{emp.5}}" name="txtEmail" class="form-control"
+                placeholder="Enter email address...!" />
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+    <div class="row" style="margin-bottom: 10px;">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-2">
+            <b>DOB</b>
+        </div>
+        <div class="col-sm-3">
+            <input type="date" id="txtDOB" value="{{emp.6}}" name="txtDOB" class="form-control" placeholder="Enter Date of birth...!" />
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+    <div class="row" style="margin-bottom: 10px;">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-2">
+            <b>Salary</b>
+        </div>
+        <div class="col-sm-3">
+            <input type="text" id="txtSalary" value="{{emp.7}}" name="txtSalary" class="form-control" placeholder="Enter salary...!" />
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+    <div class="row" style="margin-bottom: 10px;">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-2">
+            <b>Address</b>
+        </div>
+        <div class="col-sm-3">
+            <textarea id="txtAddress" name="txtAddress" class="form-control" placeholder="Enter address...!"
+                rows="3">{{emp.8}}</textarea>
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+    <div class="row" style="margin-bottom: 10px;">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-2">
+            <b>Department</b>
+        </div>
+        <div class="col-sm-3">
+            <select id="ddlDeptNo" name="ddlDeptNo" class="form-control">
+                <option value="0">-Select Department-</option>
+                {% for dept in data %}
+                    <option value="{{dept.DeptNo}}" {% if emp.9 == dept.DeptNo %}selected{% endif %}>{{dept.DeptNo}} - {{dept.Dname}} - {{dept.Location}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+    <div class="row" style="text-align: center;">
+        <div class="col-sm-12">
+            <input type="submit" id="btnUpdate" name="Update" value="Update" class="btn btn-primary" />
+            <input type="submit" id="btnCancel" name="Update" value="Cancel" class="btn btn-danger" />
+        </div>
+    </div>
+</form>
+{% endblock %}

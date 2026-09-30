@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link href="{% static 'css/bootstrap.css'%}" rel="stylesheet" />
+</head>
+<body>
+    <!--Header-->
+    <div class="row">
+        <div class="col-sm-12">
+            <h1>CRUD App</h1>
+            <div>
+                <a href="{% url 'homepage'%}">Home</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="{% url 'create'%}">Create New Employee</a>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    <!--Header-->
+
+    <!--Content-->
+    <div class="row">
+        <div class="col-sm-12">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+    <!--Content-->
+
+    <!--Footer-->
+    <hr/>
+    <div class="row">
+        <div class="col-sm-12">
+            <h1>@Copy Rights "https://www.crud.com"</h1>
+        </div>
+    </div>
+    <!--Footer-->
+</body>
+</html>

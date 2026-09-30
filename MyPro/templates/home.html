@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+<div class="row" style="background-color: red;color:yellow;margin-bottom: 20px;">
+    <div class="col-sm-12">
+        <h1>Employees Details : </h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <table class="table table-hover table-dark">
+            <thead>
+                <tr>
+                    <th>EmpId</th>
+                    <th>Ename</th>
+                    <th>Password</th>
+                    <th>Gender</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>DOB</th>
+                    <th>Salary</th>
+                    <th>Address</th>
+                    <th>DeptNo</th>
+                    <th>Edit/Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for emp in data %}
+                    <tr>
+                        <td>{{emp.EmpId}}</td>
+                        <td>{{emp.Ename}}</td>
+                        <td>{{emp.Password}}</td>
+                        <td>{{emp.Gender}}</td>
+                        <td>{{emp.Phone}}</td>
+                        <td>{{emp.Email}}</td>
+                        <td>{{emp.DOB}}</td>
+                        <td>{{emp.Salary}}</td>
+                        <td>{{emp.Address}}</td>
+                        <td>{{emp.DeptNo}}</td>
+                        <td>
+                            <a class="btn btn-success" href="{% url 'edit' emp.EmpId %}">Edit</a> |
+                            <a class="btn btn-danger" href="{% url 'delete' emp.EmpId %}">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
